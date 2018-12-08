@@ -265,7 +265,10 @@ function bufferify(x) {
       return Buffer.from(x.toString(CryptoJS.enc.Hex), 'hex')
     } else if (isHexStr(x)) {
       return Buffer.from(x, 'hex')
-    } else if (typeof x === 'string') {
+    } else if (x instanceOf ArrayBuffer) {
+      return Buffer.from(x)  
+    }
+      else if (typeof x === 'string') {
       return Buffer.from(x)
     }
   }
